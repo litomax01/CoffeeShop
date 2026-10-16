@@ -1,0 +1,50 @@
+// Cinta en movimiento entre la galería y el menú
+.ribbon {
+  overflow: hidden;
+  padding-block: var(--space-4);
+  background-color: var(--color-brick);
+  color: var(--color-paper-card);
+  border-block: 3px double rgba(251, 247, 240, 0.55);
+
+  &__track {
+    display: flex;
+    width: max-content;
+    animation: ribbon-scroll 38s linear infinite;
+  }
+
+  &:hover &__track {
+    animation-play-state: paused;
+  }
+
+  &__group {
+    display: flex;
+    flex-shrink: 0;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    li {
+      display: flex;
+      align-items: center;
+      white-space: nowrap;
+      font-family: var(--font-script);
+      font-size: var(--text-3xl);
+      line-height: 1;
+
+      // grano de café como separador
+      &::after {
+        content: '';
+        width: 10px;
+        height: 14px;
+        margin-inline: var(--space-8);
+        border-radius: 50%;
+        background-color: var(--color-mustard);
+        transform: rotate(25deg);
+      }
+    }
+  }
+}
+
+@keyframes ribbon-scroll {
+  to { transform: translateX(-50%); }
+}

@@ -1,0 +1,115 @@
+<section class="contact section" id="contacto" aria-labelledby="contact-title">
+  <img class="contact__deco contact__deco--branch" src="/assets/deco/branch.svg" alt="" width="240" height="200">
+  <img class="contact__deco contact__deco--moka" src="/assets/deco/moka.svg" alt="" width="100" height="120">
+
+  <div class="container contact__container">
+
+    <header class="contact__header" appReveal>
+      <p class="contact__script">{{ lang() === 'es' ? 'Ven a vernos' : 'Come visit' }}</p>
+      <h2 class="contact__title" id="contact-title">
+        {{ lang() === 'es' ? 'Encuéntranos' : 'Find us' }}
+      </h2>
+      <p class="contact__place">Píllaro &middot; Tungurahua</p>
+    </header>
+
+    <div class="contact__grid">
+
+      <!-- Horario -->
+      <article class="contact__card" appReveal>
+        <div class="contact__card-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="9"/>
+            <polyline points="12 7 12 12 15.5 14"/>
+          </svg>
+        </div>
+        <h3 class="contact__card-title">
+          {{ lang() === 'es' ? 'Horario' : 'Hours' }}
+        </h3>
+        <p class="contact__card-main">{{ config.hours.schedule[lang()] }}</p>
+        <p class="contact__card-sub">{{ config.hours.days[lang()] }}</p>
+      </article>
+
+      <!-- Teléfonos -->
+      <article class="contact__card" appReveal [revealDelay]="120">
+        <div class="contact__card-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.13.96.36 1.9.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0122 16.92z"/>
+          </svg>
+        </div>
+        <h3 class="contact__card-title">
+          {{ lang() === 'es' ? 'Llámanos' : 'Call us' }}
+        </h3>
+        <a
+          class="contact__card-main contact__link"
+          [href]="'tel:' + config.contact.phone1"
+          [attr.aria-label]="(lang() === 'es' ? 'Llamar al ' : 'Call ') + config.contact.phone1"
+        >{{ config.contact.phone1 }}</a>
+        @if (config.contact.phone2) {
+          <a
+            class="contact__card-main contact__link"
+            [href]="'tel:' + config.contact.phone2"
+            [attr.aria-label]="(lang() === 'es' ? 'Llamar al ' : 'Call ') + config.contact.phone2"
+          >{{ config.contact.phone2 }}</a>
+        }
+      </article>
+
+      <!-- Redes -->
+      <article class="contact__card" appReveal [revealDelay]="240">
+        <div class="contact__card-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20.8 5.6a5.2 5.2 0 00-7.4 0L12 7l-1.4-1.4a5.2 5.2 0 00-7.4 7.4L12 21.8l8.8-8.8a5.2 5.2 0 000-7.4z"/>
+          </svg>
+        </div>
+        <h3 class="contact__card-title">
+          {{ lang() === 'es' ? 'Síguenos' : 'Follow us' }}
+        </h3>
+        <p class="contact__card-sub">La Esquina de la 24 Café y Flores</p>
+        <div class="contact__social-row">
+          <a class="contact__social-btn" [href]="config.social.instagram" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="0.6" fill="currentColor"/>
+            </svg>
+          </a>
+          <a class="contact__social-btn" [href]="config.social.facebook" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/>
+            </svg>
+          </a>
+          <a class="contact__social-btn" [href]="config.social.tiktok" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M14 3v11.5a3.5 3.5 0 11-3.5-3.5"/><path d="M14 3c.4 2.6 2.1 4.2 5 4.4"/>
+            </svg>
+          </a>
+        </div>
+      </article>
+
+    </div>
+
+    <div class="contact__actions" appReveal [revealDelay]="200">
+      <a
+        class="contact__cta contact__cta--whatsapp"
+        [href]="config.social.whatsapp"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M21 11.5a8.4 8.4 0 01-12.4 7.3L3 20l1.3-5.4A8.4 8.4 0 1121 11.5z"/>
+          <path d="M9 8.5c0 3.5 3 6.5 6.5 6.5l1-1.6-2-1-1 .8a4.5 4.5 0 01-2-2l.8-1-1-2z"/>
+        </svg>
+        {{ lang() === 'es' ? 'Escríbenos por WhatsApp' : 'Message us on WhatsApp' }}
+      </a>
+      <a
+        class="contact__cta contact__cta--map"
+        href="https://www.google.com/maps/search/?api=1&query=La+Esquina+de+la+24+Pillaro+Tungurahua"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M12 21s7-6.2 7-11.5A7 7 0 005 9.5C5 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/>
+        </svg>
+        {{ lang() === 'es' ? 'Cómo llegar' : 'Get directions' }}
+      </a>
+    </div>
+
+  </div>
+</section>

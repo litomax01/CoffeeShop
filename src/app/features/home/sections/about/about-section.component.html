@@ -1,0 +1,74 @@
+<section class="about section" id="nosotros" aria-labelledby="about-title">
+  <div class="container">
+    <div class="about__grid">
+
+      <!-- Visual column -->
+      <div class="about__visual" aria-hidden="true" appReveal>
+        <div class="about__frame">
+          <div class="about__frame-inner">
+            <img
+              src="/assets/brand/logo.png"
+              alt=""
+              width="260"
+              height="260"
+              class="about__logo"
+              loading="lazy"
+            >
+            <div class="about__frame-corner about__frame-corner--tl"></div>
+            <div class="about__frame-corner about__frame-corner--tr"></div>
+            <div class="about__frame-corner about__frame-corner--bl"></div>
+            <div class="about__frame-corner about__frame-corner--br"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Text column -->
+      <div class="about__content" appReveal [revealDelay]="150">
+        <span class="overline">
+          {{ lang() === 'es' ? 'Nuestra historia' : 'Our story' }}
+        </span>
+        <h2 class="section-title" id="about-title">
+          {{ lang() === 'es'
+            ? 'Un rincón familiar entre café y flores'
+            : 'A family corner of coffee and flowers' }}
+        </h2>
+        <div class="divider"></div>
+
+        <p class="about__description lead">
+          {{ config.description[lang()] }}
+        </p>
+
+        <dl class="about__highlights">
+          <div class="about__highlight">
+            <dt class="about__highlight-label overline">
+              {{ lang() === 'es' ? 'Especialidad' : 'Specialty' }}
+            </dt>
+            <dd class="about__highlight-value">
+              {{ lang() === 'es'
+                ? 'Comida típica ecuatoriana y café artesanal'
+                : 'Traditional Ecuadorian food and artisanal coffee' }}
+            </dd>
+          </div>
+          <div class="about__highlight">
+            <dt class="about__highlight-label overline">
+              {{ lang() === 'es' ? 'Horario' : 'Hours' }}
+            </dt>
+            <dd class="about__highlight-value">
+              {{ config.hours.days[lang()] }},
+              {{ config.hours.schedule[lang()] }}
+            </dd>
+          </div>
+          <div class="about__highlight">
+            <dt class="about__highlight-label overline">
+              {{ lang() === 'es' ? 'También somos' : 'Also a' }}
+            </dt>
+            <dd class="about__highlight-value">
+              {{ lang() === 'es' ? 'Florería' : 'Flower shop' }}
+            </dd>
+          </div>
+        </dl>
+      </div>
+
+    </div>
+  </div>
+</section>

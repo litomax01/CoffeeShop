@@ -1,0 +1,437 @@
+.hero {
+  position: relative;
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-8) var(--space-4);
+  background-color: var(--color-background);
+  overflow: hidden;
+
+  // Marco doble, como el borde de la carta impresa
+  &__frame {
+    position: absolute;
+    inset: var(--space-4);
+    border: 1px solid var(--color-border);
+    pointer-events: none;
+
+    &::after {
+      content: '';
+      position: absolute;
+      inset: 6px;
+      border: 1px solid var(--color-border-light);
+    }
+  }
+
+  // --- Ilustraciones ---
+  &__deco {
+    position: absolute;
+    height: auto;
+    opacity: 0.55;
+    pointer-events: none;
+
+    &--branch-tl {
+      top: var(--space-8);
+      left: var(--space-6);
+      width: clamp(120px, 22vw, 280px);
+    }
+
+    &--branch-br {
+      right: var(--space-6);
+      bottom: var(--space-8);
+      width: clamp(120px, 22vw, 280px);
+      transform: rotate(180deg);
+    }
+
+    &--bean {
+      top: 14%;
+      right: 12%;
+      width: 40px;
+      transform: rotate(24deg);
+    }
+
+    &--moka {
+      bottom: 12%;
+      left: 10%;
+      width: 80px;
+    }
+
+    @media (max-width: 640px) {
+      &--bean,
+      &--moka {
+        display: none;
+      }
+
+      &--branch-tl,
+      &--branch-br {
+        width: 110px;
+        opacity: 0.4;
+      }
+    }
+  }
+
+  &__inner {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: var(--space-4);
+    padding-block: var(--space-12);
+    max-width: 560px;
+    width: 100%;
+  }
+
+  &__logo {
+    width: clamp(180px, 34vw, 270px);
+    height: auto;
+    border-radius: var(--radius-full);
+    margin-bottom: var(--space-2);
+  }
+
+  // --- Título ---
+  &__title {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__title-line1 {
+    font-family: var(--font-display);
+    font-size: clamp(var(--text-3xl), 9vw, var(--text-6xl));
+    font-weight: var(--weight-light);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    line-height: 1.1;
+    // compensa el espaciado final para que quede centrado
+    padding-left: 0.12em;
+  }
+
+  &__title-line2 {
+    font-family: var(--font-script);
+    font-size: clamp(var(--text-5xl), 13vw, 5.5rem);
+    font-weight: var(--weight-regular);
+    letter-spacing: 0;
+    text-transform: none;
+    line-height: 1;
+    margin-top: calc(var(--space-2) * -1);
+    color: var(--color-text-primary);
+  }
+
+  // --- Regla con grano de café ---
+  &__rule {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    width: min(280px, 70%);
+
+    span {
+      flex: 1;
+      height: 1px;
+      background-color: var(--color-text-muted);
+      opacity: 0.6;
+    }
+
+    img {
+      width: 14px;
+      height: auto;
+      transform: rotate(90deg);
+    }
+  }
+
+  &__kind {
+    font-size: var(--text-lg);
+    letter-spacing: 0.35em;
+    padding-left: 0.35em;
+    text-transform: uppercase;
+    color: var(--color-text-primary);
+  }
+
+  &__tagline {
+    max-width: 380px;
+    font-size: var(--text-base);
+    line-height: var(--leading-relaxed);
+    color: var(--color-text-secondary);
+  }
+
+  &__hours {
+    font-size: var(--text-sm);
+    letter-spacing: 0.08em;
+    color: var(--color-text-muted);
+
+    strong {
+      font-weight: var(--weight-bold);
+      color: var(--color-text-primary);
+    }
+  }
+
+  &__cta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+    margin-top: var(--space-2);
+  }
+
+  &__place {
+    margin-top: var(--space-6);
+    font-size: var(--text-xs);
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+  }
+}
+
+// =============================================================
+// Animaciones: una secuencia de entrada + movimiento sutil continuo
+// =============================================================
+.hero {
+  &__frame {
+    animation: hero-frame 1.2s ease both;
+  }
+
+  &__logo {
+    animation: hero-logo 1s cubic-bezier(0.2, 0.8, 0.2, 1) both 0.1s;
+  }
+
+  &__title-line1 {
+    animation: hero-spacing 1.4s cubic-bezier(0.2, 0.7, 0.2, 1) both 0.4s;
+  }
+
+  &__title-line2 {
+    animation: hero-write 1.2s ease-out both 0.9s;
+  }
+
+  &__rule {
+    animation: hero-rule 0.9s ease-out both 1.5s;
+
+    img {
+      animation: hero-spin 1.2s ease-out both 1.6s;
+    }
+  }
+
+  &__kind,
+  &__tagline,
+  &__hours,
+  &__cta,
+  &__place {
+    animation: hero-rise 0.8s ease-out both;
+  }
+
+  &__kind    { animation-delay: 1.7s; }
+  &__tagline { animation-delay: 1.85s; }
+  &__hours   { animation-delay: 2s; }
+  &__cta     { animation-delay: 2.15s; }
+  &__place   { animation-delay: 2.4s; }
+
+  // Ramas que se mecen, granos que flotan
+  &__deco--branch-tl {
+    transform-origin: 0 0;
+    animation: hero-fade 1.6s ease both 0.2s, hero-sway 7s ease-in-out infinite 1.8s;
+  }
+
+  &__deco--branch-br {
+    transform-origin: 100% 100%;
+    animation: hero-fade 1.6s ease both 0.4s, hero-sway-br 8s ease-in-out infinite 2s;
+  }
+
+  &__deco--bean {
+    animation: hero-fade 1.6s ease both 1s, hero-float 5s ease-in-out infinite 2s;
+  }
+
+  &__deco--moka {
+    animation: hero-fade 1.6s ease both 1.2s, hero-float 6.5s ease-in-out infinite 2.4s;
+  }
+
+  // Botones: respuesta al pasar el cursor
+  .btn {
+    transition: transform 200ms ease, background-color 200ms ease, box-shadow 200ms ease;
+
+    &:hover {
+      transform: translateY(-2px);
+    }
+  }
+}
+
+@keyframes hero-frame {
+  from { opacity: 0; transform: scale(1.04); }
+  to   { opacity: 1; transform: none; }
+}
+
+@keyframes hero-logo {
+  from { opacity: 0; transform: scale(0.8) rotate(-8deg); }
+  to   { opacity: 1; transform: none; }
+}
+
+@keyframes hero-spacing {
+  from { opacity: 0; letter-spacing: 0.45em; }
+  to   { opacity: 1; letter-spacing: 0.12em; }
+}
+
+@keyframes hero-write {
+  from { clip-path: inset(0 100% 0 0); opacity: 0; }
+  to   { clip-path: inset(0 -10% 0 -10%); opacity: 1; }
+}
+
+@keyframes hero-rule {
+  from { opacity: 0; transform: scaleX(0); }
+  to   { opacity: 1; transform: none; }
+}
+
+@keyframes hero-spin {
+  from { opacity: 0; transform: rotate(-180deg) scale(0.4); }
+  to   { opacity: 1; transform: rotate(90deg); }
+}
+
+@keyframes hero-rise {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: none; }
+}
+
+@keyframes hero-fade {
+  from { opacity: 0; }
+}
+
+@keyframes hero-sway {
+  0%, 100% { transform: rotate(-2deg); }
+  50%      { transform: rotate(2.5deg); }
+}
+
+@keyframes hero-sway-br {
+  0%, 100% { transform: rotate(178deg); }
+  50%      { transform: rotate(183deg); }
+}
+
+@keyframes hero-float {
+  0%, 100% { translate: 0 0; }
+  50%      { translate: 0 -10px; }
+}
+
+// =============================================================
+// Más elementos: taza, vapor, flores, caída de granos y pétalos
+// =============================================================
+.hero {
+  // el vapor de la cafetera se alinea con la parte superior de la moka
+  &__steam {
+    position: absolute;
+    height: auto;
+    pointer-events: none;
+    overflow: visible;
+
+    path {
+      stroke-dasharray: 90;
+      stroke-dashoffset: 90;
+      opacity: 0;
+      animation: hero-steam 4.5s ease-in-out infinite;
+    }
+
+    path:nth-child(2) { animation-delay: 1.5s; }
+    path:nth-child(3) { animation-delay: 3s; }
+
+    &--moka {
+      width: 34px;
+      bottom: calc(12% + 112px);
+      left: calc(10% + 24px);
+    }
+
+    &--cup {
+      position: relative;
+      display: block;
+      width: 40px;
+      margin: 0 auto -6px;
+    }
+  }
+
+  &__cup {
+    position: absolute;
+    right: 12%;
+    bottom: 12%;
+    width: 120px;
+    opacity: 0.6;
+    pointer-events: none;
+    animation: hero-fade 1.6s ease both 1.4s;
+
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
+      animation: hero-float 7s ease-in-out infinite 3s;
+    }
+  }
+
+  &__deco--flower-l {
+    left: 4%;
+    top: 44%;
+    width: 64px;
+    transform-origin: 50% 100%;
+    animation: hero-fade 1.6s ease both 1.1s, hero-flower 6s ease-in-out infinite 2s;
+  }
+
+  &__deco--flower-r {
+    right: 5%;
+    top: 26%;
+    width: 52px;
+    transform-origin: 50% 100%;
+    animation: hero-fade 1.6s ease both 1.3s, hero-flower 7.5s ease-in-out infinite 2.8s reverse;
+  }
+
+  // Elementos que caen despacio y vuelven a empezar
+  &__fall {
+    position: absolute;
+    top: -60px;
+    height: auto;
+    pointer-events: none;
+    opacity: 0;
+    animation: hero-fall 18s linear infinite;
+
+    &--bean-a  { left: 22%; width: 22px; animation-duration: 20s; animation-delay: 2s; }
+    &--bean-b  { left: 78%; width: 18px; animation-duration: 24s; animation-delay: 9s; }
+    &--petal-a { left: 8%;  width: 20px; animation-duration: 17s; animation-delay: 1s; }
+    &--petal-b { left: 36%; width: 16px; animation-duration: 21s; animation-delay: 6s; }
+    &--petal-c { left: 64%; width: 22px; animation-duration: 19s; animation-delay: 4s; }
+    &--petal-d { left: 90%; width: 17px; animation-duration: 23s; animation-delay: 12s; }
+  }
+
+  @media (max-width: 640px) {
+    // En celular: menos elementos para no recargar
+    &__deco--flower-l,
+    &__deco--flower-r,
+    &__steam--moka,
+    &__fall--bean-b,
+    &__fall--petal-b,
+    &__fall--petal-d {
+      display: none;
+    }
+
+    &__cup {
+      width: 84px;
+      right: 6%;
+      bottom: 4%;
+    }
+  }
+}
+
+@keyframes hero-steam {
+  0%   { stroke-dashoffset: 90; opacity: 0; transform: translateY(8px); }
+  30%  { opacity: 0.7; }
+  70%  { stroke-dashoffset: 0; opacity: 0.35; }
+  100% { stroke-dashoffset: -90; opacity: 0; transform: translateY(-14px); }
+}
+
+@keyframes hero-flower {
+  0%, 100% { transform: rotate(-4deg); }
+  50%      { transform: rotate(4deg); }
+}
+
+@keyframes hero-fall {
+  0%   { opacity: 0; transform: translate(0, 0) rotate(0deg); }
+  8%   { opacity: 0.8; }
+  25%  { transform: translate(24px, 25vh) rotate(70deg); }
+  50%  { transform: translate(-20px, 52vh) rotate(160deg); }
+  75%  { transform: translate(26px, 78vh) rotate(250deg); }
+  92%  { opacity: 0.7; }
+  100% { opacity: 0; transform: translate(-8px, 104vh) rotate(330deg); }
+}

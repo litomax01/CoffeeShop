@@ -1,0 +1,10 @@
+<button
+  class="lang-toggle"
+  type="button"
+  [attr.aria-label]="lang() === 'es' ? 'Switch to English' : 'Cambiar a Español'"
+  (click)="toggle()"
+>
+  <span class="lang-toggle__option" [class.lang-toggle__option--active]="lang() === 'es'">ES</span>
+  <span class="lang-toggle__separator" aria-hidden="true">|</span>
+  <span class="lang-toggle__option" [class.lang-toggle__option--active]="lang() === 'en'">EN</span>
+</button>

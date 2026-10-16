@@ -1,0 +1,35 @@
+<section class="gallery section" id="galeria" aria-labelledby="gallery-title">
+  <div class="container">
+
+    <header class="gallery__header" appReveal>
+      <p class="gallery__script">{{ lang() === 'es' ? 'Hecho en casa' : 'Homemade' }}</p>
+      <h2 class="section-title" id="gallery-title">
+        {{ lang() === 'es' ? 'Nuestros Platos' : 'Our Dishes' }}
+      </h2>
+    </header>
+
+    <ul class="gallery__grid" role="list">
+      @for (dish of dishes; track dish.src; let i = $index) {
+        <li class="gallery__item" [class.gallery__item--alt]="i % 2 === 1" appReveal [revealDelay]="i * 120">
+          <figure class="gallery__print">
+            <div class="gallery__img-wrap">
+              <img
+                class="gallery__img"
+                [src]="dish.src"
+                [alt]="dish.alt[lang()]"
+                width="600"
+                height="600"
+                loading="lazy"
+              >
+            </div>
+            <figcaption class="gallery__caption">
+              <span class="gallery__dish-name">{{ dish.name[lang()] }}</span>
+            </figcaption>
+          </figure>
+          <span class="gallery__price">{{ dish.price }}</span>
+        </li>
+      }
+    </ul>
+
+  </div>
+</section>

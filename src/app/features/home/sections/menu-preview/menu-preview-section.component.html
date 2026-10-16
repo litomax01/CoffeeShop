@@ -1,0 +1,69 @@
+<section class="menu-preview section" id="menu" aria-labelledby="menu-preview-title">
+  <div class="container">
+
+    <!-- Header -->
+    <header class="section-header" appReveal>
+      <span class="overline">{{ lang() === 'es' ? 'Lo que servimos' : 'What we serve' }}</span>
+      <h2 class="section-title" id="menu-preview-title">
+        {{ lang() === 'es' ? 'Nuestro Menú' : 'Our Menu' }}
+      </h2>
+      <div class="divider divider--center"></div>
+      <p>
+        {{ lang() === 'es'
+          ? 'Comida típica ecuatoriana, bebidas artesanales y más.'
+          : 'Traditional Ecuadorian food, artisanal drinks and more.' }}
+      </p>
+    </header>
+
+    <!-- Category grid -->
+    <div class="menu-preview__grid">
+      @for (category of featuredCategories; track category.id; let i = $index) {
+        <article class="menu-preview__card" appReveal [revealDelay]="(i % 3) * 120" [attr.aria-labelledby]="'cat-' + category.id">
+          @if (category.image) {
+            <div class="menu-preview__card-img-wrap">
+              <img
+                class="menu-preview__card-img"
+                [src]="'/assets/' + category.image"
+                [alt]="category.name[lang()]"
+                width="400"
+                height="200"
+                loading="lazy"
+              >
+            </div>
+          }
+          <div class="menu-preview__card-body">
+            <h3 class="menu-preview__card-title" [id]="'cat-' + category.id">
+              {{ category.name[lang()] }}
+            </h3>
+            <ul class="menu-preview__items" role="list">
+              @for (item of category.items; track item.id) {
+                <li class="menu-preview__item">
+                  <span class="menu-preview__item-name">
+                    {{ item.name[lang()] }}
+                  </span>
+                  <span class="menu-preview__item-dots" aria-hidden="true"></span>
+                  <span class="menu-preview__item-price">
+                    @if (item.price !== undefined) {
+                      {{ item.price | usdPrice }}
+                    } @else if (item.variants && item.variants.length > 0) {
+                      {{ lang() === 'es' ? 'desde' : 'from' }}
+                      {{ item.variants[0].amount | usdPrice }}
+                    }
+                  </span>
+                </li>
+              }
+            </ul>
+          </div>
+        </article>
+      }
+    </div>
+
+    <!-- CTA -->
+    <div class="menu-preview__cta text-center" appReveal>
+      <a class="btn btn--primary" routerLink="/menu" id="menu-preview-see-all">
+        {{ lang() === 'es' ? 'Ver menú completo' : 'View full menu' }}
+      </a>
+    </div>
+
+  </div>
+</section>

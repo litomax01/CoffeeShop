@@ -1,0 +1,112 @@
+<header class="nav" [class.nav--scrolled]="isScrolled()" role="banner">
+  <nav
+    class="container nav__inner"
+    [attr.aria-label]="lang() === 'es' ? 'Navegación principal' : 'Main navigation'"
+  >
+    <!-- Logo -->
+    <a
+      class="nav__brand"
+      routerLink="/"
+      (click)="scrollTo('inicio')"
+      [attr.aria-label]="config.businessName + ' — Inicio'"
+    >
+      <img
+        src="/assets/brand/logo.png"
+        [alt]="config.businessName + ' — Café & Flores'"
+        width="56"
+        height="56"
+        class="nav__logo"
+      >
+    </a>
+
+    <!-- Desktop navigation links -->
+    <ul class="nav__links" role="list">
+      @for (link of navLinks; track link.label.es) {
+        <li>
+          @if (link.route) {
+            <a
+              class="nav__link"
+              [routerLink]="link.route"
+              routerLinkActive="nav__link--active"
+            >
+              {{ link.label[lang()] }}
+            </a>
+          } @else {
+            <button
+              class="nav__link"
+              type="button"
+              (click)="scrollTo(link.fragment!)"
+            >
+              {{ link.label[lang()] }}
+            </button>
+          }
+        </li>
+      }
+    </ul>
+
+    <!-- Actions -->
+    <div class="nav__actions">
+      <app-language-toggle />
+
+      <button
+        class="nav__hamburger"
+        type="button"
+        [attr.aria-expanded]="isMenuOpen()"
+        [attr.aria-label]="isMenuOpen()
+          ? (lang() === 'es' ? 'Cerrar menú' : 'Close menu')
+          : (lang() === 'es' ? 'Abrir menú' : 'Open menu')"
+        (click)="toggleMenu()"
+      >
+        <span class="nav__bar" [class.nav__bar--open]="isMenuOpen()"></span>
+      </button>
+    </div>
+  </nav>
+</header>
+
+<!-- Mobile overlay -->
+@if (isMenuOpen()) {
+  <div
+    class="nav__overlay"
+    aria-hidden="true"
+    (click)="closeMenu()"
+  ></div>
+}
+
+<!-- Mobile drawer -->
+<aside
+  class="nav__drawer"
+  [class.nav__drawer--open]="isMenuOpen()"
+  [attr.aria-hidden]="!isMenuOpen()"
+  [attr.aria-label]="lang() === 'es' ? 'Menú de navegación' : 'Navigation menu'"
+>
+  <ul class="nav__drawer-links" role="list">
+    @for (link of navLinks; track link.label.es) {
+      <li>
+        @if (link.route) {
+          <a
+            class="nav__drawer-link"
+            [routerLink]="link.route"
+            (click)="closeMenu()"
+          >
+            {{ link.label[lang()] }}
+          </a>
+        } @else {
+          <button
+            class="nav__drawer-link"
+            type="button"
+            (click)="scrollTo(link.fragment!)"
+          >
+            {{ link.label[lang()] }}
+          </button>
+        }
+      </li>
+    }
+  </ul>
+
+  <div class="nav__drawer-footer">
+    <app-language-toggle />
+    <p class="nav__drawer-hours caption">
+      {{ config.hours.days[lang()] }} &bull; {{ config.hours.schedule[lang()] }}
+    </p>
+  </div>
+</aside>

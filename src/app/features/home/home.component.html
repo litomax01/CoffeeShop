@@ -1,0 +1,18 @@
+<app-hero-section />
+<app-about-section />
+<app-gallery-section />
+
+<div class="ribbon" role="presentation">
+  <div class="ribbon__track">
+    @for (copy of [0, 1]; track copy) {
+      <ul class="ribbon__group" [attr.aria-hidden]="copy === 1 ? 'true' : null">
+        @for (word of ribbonWords; track word) {
+          <li>{{ word }}</li>
+        }
+      </ul>
+    }
+  </div>
+</div>
+
+<app-menu-preview-section />
+<app-contact-section />

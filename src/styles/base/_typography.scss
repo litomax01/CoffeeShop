@@ -1,0 +1,103 @@
+// =============================================================
+// TYPOGRAPHY — La Esquina de la 24
+// =============================================================
+
+// --- Headings ---
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  font-weight: var(--weight-light);
+  line-height: var(--leading-tight);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-primary);
+}
+
+h1 { font-size: var(--text-5xl); }
+h2 { font-size: var(--text-4xl); }
+h3 { font-size: var(--text-3xl); }
+h4 { font-size: var(--text-2xl); }
+h5 { font-size: var(--text-xl); }
+h6 { font-size: var(--text-lg); }
+
+@media (max-width: 768px) {
+  h1 { font-size: var(--text-4xl); }
+  h2 { font-size: var(--text-3xl); }
+  h3 { font-size: var(--text-2xl); }
+}
+
+@media (max-width: 480px) {
+  h1 { font-size: var(--text-3xl); }
+  h2 { font-size: var(--text-2xl); }
+}
+
+// --- Párrafos ---
+
+p {
+  line-height: var(--leading-relaxed);
+  color: var(--color-text-secondary);
+
+  &.lead {
+    font-size: var(--text-lg);
+    line-height: var(--leading-relaxed);
+  }
+}
+
+// --- Clases tipográficas de uso global ---
+
+.display-title {
+  font-family: var(--font-display);
+  font-size: var(--text-7xl);
+  font-weight: var(--weight-light);
+  line-height: 1.05;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+
+  @media (max-width: 1024px) {
+    font-size: var(--text-6xl);
+  }
+
+  @media (max-width: 768px) {
+    font-size: var(--text-5xl);
+  }
+
+  @media (max-width: 480px) {
+    font-size: var(--text-4xl);
+  }
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: var(--text-3xl);
+  font-weight: var(--weight-light);
+  line-height: var(--leading-tight);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+
+  @media (max-width: 768px) {
+    font-size: var(--text-2xl);
+  }
+}
+
+.section-subtitle {
+  font-family: var(--font-script);
+  font-size: var(--text-3xl);
+  font-weight: var(--weight-regular);
+  line-height: 1.1;
+  color: var(--color-text-secondary);
+}
+
+.overline {
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  font-weight: var(--weight-bold);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.caption {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  line-height: var(--leading-normal);
+}

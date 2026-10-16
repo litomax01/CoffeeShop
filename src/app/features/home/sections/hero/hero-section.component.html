@@ -1,0 +1,91 @@
+<section class="hero" id="inicio" aria-labelledby="hero-title">
+  <div class="hero__frame" aria-hidden="true"></div>
+
+  <img class="hero__deco hero__deco--branch-tl" src="/assets/deco/branch.svg" alt="" width="240" height="200">
+  <img class="hero__deco hero__deco--branch-br" src="/assets/deco/branch.svg" alt="" width="240" height="200">
+  <img class="hero__deco hero__deco--bean" src="/assets/deco/bean.svg" alt="" width="60" height="80">
+  <img class="hero__deco hero__deco--moka" src="/assets/deco/moka.svg" alt="" width="100" height="120">
+
+  <!-- Vapor de la cafetera -->
+  <svg class="hero__steam hero__steam--moka" viewBox="0 0 60 80" fill="none" stroke="#5A4A45" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+    <path d="M14 78 C4 62 24 54 14 38 C6 26 18 18 14 4"/>
+    <path d="M30 78 C20 60 40 52 30 34 C22 22 34 14 30 2"/>
+    <path d="M46 78 C36 62 56 54 46 38 C38 26 50 18 46 4"/>
+  </svg>
+
+  <!-- Taza con vapor -->
+  <div class="hero__cup" aria-hidden="true">
+    <svg class="hero__steam hero__steam--cup" viewBox="0 0 60 80" fill="none" stroke="#5A4A45" stroke-width="2" stroke-linecap="round">
+      <path d="M14 78 C4 62 24 54 14 38 C6 26 18 18 14 4"/>
+      <path d="M30 78 C20 60 40 52 30 34 C22 22 34 14 30 2"/>
+      <path d="M46 78 C36 62 56 54 46 38 C38 26 50 18 46 4"/>
+    </svg>
+    <img src="/assets/deco/cup.svg" alt="" width="120" height="80">
+  </div>
+
+  <!-- Flores -->
+  <img class="hero__deco hero__deco--flower-l" src="/assets/deco/flower.svg" alt="" width="80" height="150">
+  <img class="hero__deco hero__deco--flower-r" src="/assets/deco/flower.svg" alt="" width="80" height="150">
+
+  <!-- Granos y pétalos que caen en bucle -->
+  <img class="hero__fall hero__fall--bean-a" src="/assets/deco/bean.svg" alt="" width="60" height="80">
+  <img class="hero__fall hero__fall--bean-b" src="/assets/deco/bean.svg" alt="" width="60" height="80">
+  <img class="hero__fall hero__fall--petal-a" src="/assets/deco/petal.svg" alt="" width="30" height="40">
+  <img class="hero__fall hero__fall--petal-b" src="/assets/deco/petal.svg" alt="" width="30" height="40">
+  <img class="hero__fall hero__fall--petal-c" src="/assets/deco/petal.svg" alt="" width="30" height="40">
+  <img class="hero__fall hero__fall--petal-d" src="/assets/deco/petal.svg" alt="" width="30" height="40">
+
+  <div class="hero__inner">
+    <img
+      src="/assets/brand/logo.png"
+      alt=""
+      width="200"
+      height="200"
+      class="hero__logo"
+      priority
+    >
+
+    <h1 class="hero__title" id="hero-title">
+      <span class="hero__title-line1">La Esquina</span>
+      <span class="hero__title-line2">de la 24</span>
+    </h1>
+
+    <div class="hero__rule" aria-hidden="true">
+      <span></span>
+      <img src="/assets/deco/bean.svg" alt="" width="14" height="19">
+      <span></span>
+    </div>
+
+    <p class="hero__kind">
+      {{ lang() === 'es' ? 'Café & Flores' : 'Coffee & Flowers' }}
+    </p>
+
+    <p class="hero__tagline">
+      {{ config.tagline[lang()] }}
+    </p>
+
+    <p class="hero__hours">
+      {{ config.hours.days[lang()] }} &middot; <strong>{{ config.hours.schedule[lang()] }}</strong>
+    </p>
+
+    <div class="hero__cta">
+      <button
+        class="btn btn--primary"
+        type="button"
+        (click)="scrollToMenu()"
+        id="hero-cta-menu"
+      >
+        {{ lang() === 'es' ? 'Ver Menú' : 'See Menu' }}
+      </button>
+      <a
+        class="btn btn--outline"
+        routerLink="/menu"
+        id="hero-cta-full-menu"
+      >
+        {{ lang() === 'es' ? 'Menú completo' : 'Full Menu' }}
+      </a>
+    </div>
+
+    <p class="hero__place">Píllaro &middot; Tungurahua</p>
+  </div>
+</section>

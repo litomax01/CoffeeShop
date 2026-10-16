@@ -1,0 +1,288 @@
+.menu-page {
+  min-height: 100vh;
+  background-color: var(--color-background);
+
+  // --- Portada ---
+  &__header {
+    padding-block: var(--space-6) var(--space-8);
+    text-align: center;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  &__header-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-3);
+  }
+
+  &__back {
+    align-self: flex-start;
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-1);
+    min-height: 44px;
+    color: var(--color-text-muted);
+    text-decoration: none;
+    font-size: var(--text-sm);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    transition: color var(--transition-fast);
+
+    &:hover { color: var(--color-text-primary); }
+  }
+
+  &__back-icon {
+    width: 18px;
+    height: 18px;
+  }
+
+  &__logo {
+    width: 132px;
+    height: 132px;
+    object-fit: contain;
+    border-radius: var(--radius-full);
+  }
+
+  &__title {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__title-line1 {
+    font-size: clamp(var(--text-2xl), 8vw, var(--text-5xl));
+    font-weight: var(--weight-light);
+    letter-spacing: 0.12em;
+    padding-left: 0.12em;
+    line-height: 1.1;
+  }
+
+  &__title-line2 {
+    font-family: var(--font-script);
+    font-size: clamp(var(--text-4xl), 11vw, var(--text-7xl));
+    font-weight: var(--weight-regular);
+    letter-spacing: 0;
+    text-transform: none;
+    line-height: 1;
+  }
+
+  &__label {
+    font-size: var(--text-lg);
+    letter-spacing: 0.4em;
+    padding-left: 0.4em;
+    text-transform: uppercase;
+    color: var(--color-text-secondary);
+  }
+
+  &__hours {
+    font-size: var(--text-sm);
+    letter-spacing: 0.08em;
+    color: var(--color-text-muted);
+  }
+
+  // --- Índice: salto rápido a cada sección ---
+  &__index {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    display: flex;
+    gap: var(--space-2);
+    padding: var(--space-3) var(--space-4);
+    margin-inline: calc(var(--space-4) * -1);
+    overflow-x: auto;
+    scrollbar-width: none;
+    background-color: var(--color-background);
+    border-bottom: 1px solid var(--color-border-light);
+
+    &::-webkit-scrollbar { display: none; }
+
+    a {
+      flex-shrink: 0;
+      display: inline-flex;
+      align-items: center;
+      min-height: 44px;
+      padding-inline: var(--space-4);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-sm);
+      font-size: var(--text-sm);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: var(--color-text-secondary);
+      transition: background-color var(--transition-fast), color var(--transition-fast);
+
+      &:hover {
+        background-color: var(--color-primary);
+        color: var(--color-text-inverse);
+        border-color: var(--color-primary);
+      }
+    }
+
+    @media (min-width: 801px) {
+      position: static;
+      flex-wrap: wrap;
+      justify-content: center;
+      overflow: visible;
+      border-bottom: none;
+      margin-inline: 0;
+      padding-block: var(--space-6) 0;
+    }
+  }
+
+  // --- Contenido ---
+  &__content {
+    padding-block: 0 var(--space-16);
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: var(--space-16);
+    row-gap: var(--space-12);
+    padding-top: var(--space-10);
+
+    @media (max-width: 800px) {
+      grid-template-columns: 1fr;
+      row-gap: var(--space-10);
+    }
+  }
+
+  // --- Contacto ---
+  &__contact-strip {
+    background-color: var(--color-surface-warm);
+    padding-block: var(--space-6);
+  }
+
+  &__contact-inner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-6);
+    flex-wrap: wrap;
+    text-align: center;
+  }
+
+  &__contact-text {
+    font-size: var(--text-sm);
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--color-text-primary);
+  }
+
+  &__phones {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    color: var(--color-text-primary);
+  }
+
+  &__phone-link {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    font-weight: var(--weight-bold);
+    letter-spacing: 0.06em;
+    color: var(--color-text-primary);
+    text-decoration: none;
+    font-size: var(--text-lg);
+
+    &:hover { text-decoration: underline; }
+  }
+}
+
+// --- Sección de menú ---
+.menu-cat {
+  scroll-margin-top: 84px;
+
+  &__title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-3);
+    margin-bottom: var(--space-6);
+    font-size: var(--text-xl);
+    letter-spacing: 0.2em;
+    text-align: center;
+
+    &::before,
+    &::after {
+      content: '';
+      width: 5px;
+      height: 5px;
+      border-radius: var(--radius-full);
+      background-color: var(--color-mustard);
+      flex-shrink: 0;
+    }
+  }
+
+  &__items {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-5);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  &__item-name {
+    margin-bottom: var(--space-2);
+    font-size: var(--text-base);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-text-primary);
+  }
+
+  &__item-desc {
+    margin-top: var(--space-1);
+    max-width: 52ch;
+    font-size: var(--text-sm);
+    line-height: var(--leading-relaxed);
+    color: var(--color-text-muted);
+  }
+
+  &__variants {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+// --- Fila: nombre ····· precio ---
+.menu-row {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-2);
+  min-height: 28px;
+
+  &__name {
+    font-size: var(--text-base);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-text-primary);
+
+    &--sub {
+      text-transform: none;
+      letter-spacing: 0.04em;
+      color: var(--color-text-secondary);
+    }
+  }
+
+  &__leader {
+    flex: 1;
+    min-width: 16px;
+    border-bottom: 1.5px dotted var(--color-border);
+    transform: translateY(-3px);
+  }
+
+  &__price {
+    font-size: var(--text-base);
+    font-weight: var(--weight-bold);
+    font-variant-numeric: tabular-nums;
+    color: var(--color-brick);
+  }
+}

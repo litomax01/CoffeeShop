@@ -1,0 +1,15 @@
+// =============================================================
+// GLOBAL STYLES — La Esquina de la 24
+// Punto de entrada principal de estilos
+// =============================================================
+
+// 1. Design tokens (CSS Custom Properties)
+@use './styles/tokens/variables';
+
+// 2. Base
+@use './styles/base/reset';
+@use './styles/base/typography';
+
+// 3. Utilidades
+@use './styles/utilities/layout';
+@use './styles/utilities/motion';

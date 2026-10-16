@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 200" fill="none" stroke="#5A4A45" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M6 30 C50 40 90 70 130 110 C160 140 190 160 232 168"/>
+  <g id="leaf">
+    <path d="M44 38 C58 6 92 6 112 20 C100 46 70 56 44 38Z"/>
+    <path d="M48 36 C70 30 90 24 108 20"/>
+  </g>
+  <path d="M96 78 C112 46 150 40 172 54 C160 82 126 92 96 78Z"/>
+  <path d="M101 76 C124 70 148 62 168 54"/>
+  <path d="M120 112 C100 140 104 176 128 190 C150 170 146 134 120 112Z"/>
+  <path d="M121 116 C120 140 124 166 128 188"/>
+  <path d="M168 138 C196 120 222 126 232 142 C214 162 184 160 168 138Z"/>
+  <path d="M172 138 C192 136 214 140 230 142"/>
+  <circle cx="64" cy="64" r="7"/><circle cx="78" cy="72" r="7"/><circle cx="62" cy="80" r="7"/>
+  <circle cx="150" cy="104" r="6"/><circle cx="162" cy="112" r="6"/>
+  <path d="M64 71 L66 52 M78 79 L70 66 M62 87 L72 70"/>
+</svg>
